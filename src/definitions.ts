@@ -118,7 +118,7 @@ export interface StopScanOptions {
   /**
    * If this is set to `true`, the `startScan` method will resolve.
    * Additionally `hasContent` will be `false`.
-   * For more information see: https://github.com/capacitor-community/barcode-scanner/issues/17
+   * For more information see: https://github.com/amusoire/barcode-scanner/issues/17
    *
    * @default true
    * @since 2.1.0
@@ -182,7 +182,7 @@ export interface CheckPermissionOptions {
   /**
    * If this is set to `true`, the user will be prompted for the permission.
    * The prompt will only show if the permission was not yet granted and also not denied completely yet.
-   * For more information see: https://github.com/capacitor-community/barcode-scanner#permissions
+   * For more information see: https://github.com/amusoire/barcode-scanner#permissions
    *
    * @default false
    * @since 1.0.0
