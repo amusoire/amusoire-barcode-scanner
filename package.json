@@ -1,7 +1,7 @@
 {
-  "name": "amusoire-barcode-scanner",
+  "name": "capacitor-amusoire-barcode-scanner",
   "private": false,
-  "version": "4.0.5",
+  "version": "4.0.6",
   "description": "A fast and efficient (QR) barcode scanner for Capacitor",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
