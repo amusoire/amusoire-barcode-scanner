@@ -1,5 +1,5 @@
 {
-  "name": "@amusoire/barcode-scanner",
+  "name": "amusoire-barcode-scanner",
   "private": false,
   "version": "4.0.1",
   "description": "A fast and efficient (QR) barcode scanner for Capacitor",
