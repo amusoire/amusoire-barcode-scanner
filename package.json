@@ -1,5 +1,5 @@
 {
-  "name": "@capacitor-community/barcode-scanner",
+  "name": "@amusoire/barcode-scanner",
   "version": "4.0.1",
   "description": "A fast and efficient (QR) barcode scanner for Capacitor",
   "main": "dist/plugin.cjs.js",
@@ -11,16 +11,16 @@
     "android/build.gradle",
     "dist/",
     "ios/Plugin/",
-    "CapacitorCommunityBarcodeScanner.podspec"
+    "CapacitorAmusoireBarcodeScanner.podspec"
   ],
   "author": "tafelnl",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/capacitor-community/barcode-scanner.git"
+    "url": "git+https://github.com/amusoire/amusoire-barcode-scanner.git"
   },
   "bugs": {
-    "url": "https://github.com/capacitor-community/barcode-scanner/issues"
+    "url": "https://github.com/amusoire/amusoire-barcode-scanner/issues"
   },
   "keywords": [
     "capacitor",
@@ -28,7 +28,7 @@
     "native"
   ],
   "scripts": {
-    "docgen": "docgen --api BarcodeScannerPlugin --output-readme API_REFERENCE.md",
+    "docgen": "docgen --api AmusoireBarcodeScannerPlugin --output-readme API_REFERENCE.md",
     "lint": "npm run eslint && npm run prettier -- --check && npm run swiftlint -- lint",
     "eslint": "eslint . --ext ts",
     "prettier": "prettier \"**/*.{css,html,ts,js,java}\"",
@@ -79,7 +79,7 @@
       "dist/**/*"
     ]
   },
-  "homepage": "https://github.com/capacitor-community/barcode-scanner#readme",
+  "homepag": "https://github.com/amusoire/amusoire-barcode-scanner",
   "directories": {
     "example": "examples"
   },

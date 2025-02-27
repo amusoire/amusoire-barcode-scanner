@@ -127,18 +127,18 @@ The complete API reference can be found [here](./src/definitions.ts).
 Scanning a (QR) barcode can be as simple as:
 
 ```js
-import { BarcodeScanner } from '@capacitor-community/barcode-scanner';
+import { AmusoireBarcodeScanner } from '@capacitor-community/barcode-scanner';
 
 const startScan = async () => {
   // Check camera permission
   // This is just a simple example, check out the better checks below
-  await BarcodeScanner.checkPermission({ force: true });
+  await AmusoireBarcodeScanner.checkPermission({ force: true });
 
   // make background of WebView transparent
   // note: if you are using ionic this might not be enough, check below
-  BarcodeScanner.hideBackground();
+  AmusoireBarcodeScanner.hideBackground();
 
-  const result = await BarcodeScanner.startScan(); // start scanning and wait for a result
+  const result = await AmusoireBarcodeScanner.startScan(); // start scanning and wait for a result
 
   // if the result has content
   if (result.hasContent) {
@@ -160,11 +160,11 @@ If you still cannot see the camera view, check [**here**](#the-scanner-view-does
 After `startScan()` is resolved, the Scanner View will be automatically destroyed to save battery. But if you want to cancel the scan before `startScan()` is resolved (AKA no code has been recognized yet), you will have to call `stopScan()` manually. Example:
 
 ```js
-import { BarcodeScanner } from '@capacitor-community/barcode-scanner';
+import { AmusoireBarcodeScanner } from '@capacitor-community/barcode-scanner';
 
 const stopScan = () => {
-  BarcodeScanner.showBackground();
-  BarcodeScanner.stopScan();
+  AmusoireBarcodeScanner.showBackground();
+  AmusoireBarcodeScanner.stopScan();
 };
 ```
 
@@ -174,13 +174,13 @@ In Vue.js you could do something like this in a specific view where you use the 
 
 ```vue
 <script>
-import { BarcodeScanner } from '@capacitor-community/barcode-scanner';
+import { AmusoireBarcodeScanner } from '@capacitor-community/barcode-scanner';
 
 export default {
   methods: {
     stopScan() {
-      BarcodeScanner.showBackground();
-      BarcodeScanner.stopScan();
+      AmusoireBarcodeScanner.showBackground();
+      AmusoireBarcodeScanner.stopScan();
     },
   },
 
@@ -202,23 +202,23 @@ To boost performance and responsiveness (by just a bit), a `prepare()` method is
 For example:
 
 ```js
-import { BarcodeScanner } from '@capacitor-community/barcode-scanner';
+import { AmusoireBarcodeScanner } from '@capacitor-community/barcode-scanner';
 
 const prepare = () => {
-  BarcodeScanner.prepare();
+  AmusoireBarcodeScanner.prepare();
 };
 
 const startScan = async () => {
-  BarcodeScanner.hideBackground();
-  const result = await BarcodeScanner.startScan();
+  AmusoireBarcodeScanner.hideBackground();
+  const result = await AmusoireBarcodeScanner.startScan();
   if (result.hasContent) {
     console.log(result.content);
   }
 };
 
 const stopScan = () => {
-  BarcodeScanner.showBackground();
-  BarcodeScanner.stopScan();
+  AmusoireBarcodeScanner.showBackground();
+  AmusoireBarcodeScanner.stopScan();
 };
 
 const askUser = () => {
@@ -239,11 +239,11 @@ askUser();
 This is fully optional and would work the same as:
 
 ```js
-import { BarcodeScanner } from '@capacitor-community/barcode-scanner';
+import { AmusoireBarcodeScanner } from '@capacitor-community/barcode-scanner';
 
 const startScan = async () => {
-  BarcodeScanner.hideBackground();
-  const result = await BarcodeScanner.startScan();
+  AmusoireBarcodeScanner.hideBackground();
+  const result = await AmusoireBarcodeScanner.startScan();
   if (result.hasContent) {
     console.log(result.content);
   }
@@ -267,11 +267,11 @@ The latter will just appear a little slower to the user.
 This plugin does not automatically handle permissions. But the plugin _does_ have a utility method to check and request the permission. You will have to request the permission from JavaScript. A simple example follows:
 
 ```js
-import { BarcodeScanner } from '@capacitor-community/barcode-scanner';
+import { AmusoireBarcodeScanner } from '@capacitor-community/barcode-scanner';
 
 const checkPermission = async () => {
   // check or request permission
-  const status = await BarcodeScanner.checkPermission({ force: true });
+  const status = await AmusoireBarcodeScanner.checkPermission({ force: true });
 
   if (status.granted) {
     // the user granted permission
@@ -285,11 +285,11 @@ const checkPermission = async () => {
 A more detailed and more UX-optimized example:
 
 ```js
-import { BarcodeScanner } from '@capacitor-community/barcode-scanner';
+import { AmusoireBarcodeScanner } from '@capacitor-community/barcode-scanner';
 
 const didUserGrantPermission = async () => {
   // check if user already granted permission
-  const status = await BarcodeScanner.checkPermission({ force: false });
+  const status = await AmusoireBarcodeScanner.checkPermission({ force: false });
 
   if (status.granted) {
     // user granted permission
@@ -325,7 +325,7 @@ const didUserGrantPermission = async () => {
   // user has not denied permission
   // but the user also has not yet granted the permission
   // so request it
-  const statusRequest = await BarcodeScanner.checkPermission({ force: true });
+  const statusRequest = await AmusoireBarcodeScanner.checkPermission({ force: true });
 
   if (statusRequest.asked) {
     // system requested the user for permission during this call
@@ -347,17 +347,17 @@ didUserGrantPermission();
 If a user denied the permission for good, `status.denied` will be set to true. On Android this will happen only when the user checks the box `never ask again`. To get the permission anyway you will have to redirect the user to the settings of the app. This can be done simply be doing the following:
 
 ```js
-import { BarcodeScanner } from '@capacitor-community/barcode-scanner';
+import { AmusoireBarcodeScanner } from '@capacitor-community/barcode-scanner';
 
 const checkPermission = async () => {
-  const status = await BarcodeScanner.checkPermission();
+  const status = await AmusoireBarcodeScanner.checkPermission();
 
   if (status.denied) {
     // the user denied permission for good
     // redirect user to app settings if they want to grant it anyway
     const c = confirm('If you want to grant permission for using your camera, enable it in the app settings.');
     if (c) {
-      BarcodeScanner.openAppSettings();
+      AmusoireBarcodeScanner.openAppSettings();
     }
   }
 };
@@ -368,9 +368,9 @@ const checkPermission = async () => {
 You can setup the scanner to only recognize specific types of barcodes like this:
 
 ```ts
-import { BarcodeScanner, SupportedFormat } from '@capacitor-community/barcode-scanner';
+import { AmusoireBarcodeScanner, SupportedFormat } from '@capacitor-community/barcode-scanner';
 
-BarcodeScanner.startScan({ targetedFormats: [SupportedFormat.QR_CODE] }); // this will now only target QR-codes
+AmusoireBarcodeScanner.startScan({ targetedFormats: [SupportedFormat.QR_CODE] }); // this will now only target QR-codes
 ```
 
 If `targetedFormats` is _not specified_ or _left empty_, _all types_ of barcodes will be targeted.
@@ -527,11 +527,11 @@ After your done with your scanning work, you can simply remove this class.
 document.querySelector('body').classList.remove('scanner-active');
 ```
 
-### I have a `Error: Plugin BarcodeScanner does not respond to method call` error message on iOS
+### I have a `Error: Plugin AmusoireBarcodeScanner does not respond to method call` error message on iOS
 
 In Xcode click on `Product` > `Clean Build Folder` and try to build again.
 
-### I have a `Cannot resolve symbol BarcodeScanner` error message in Android Studio
+### I have a `Cannot resolve symbol AmusoireBarcodeScanner` error message in Android Studio
 
 In Android Studio click `File` > `Sync Project with Gradle Files` and try to build again.
 
@@ -548,7 +548,7 @@ If you cannot see the scanner in your viewport, please follow these steps:
 
 ### I do not find the scanner in the DOM
 
-This should appear in the DOM when running the `BarcodeScanner.startScan()` method.
+This should appear in the DOM when running the `AmusoireBarcodeScanner.startScan()` method.
 
 ```html
 <body>
@@ -567,8 +567,8 @@ If it does not, it may be a bug due to the component being loaded to deep inside
 You can try to see if the plugin is working properly by adding the following in your `app.component.ts` file.
 
 ```typescript
-BarcodeScanner.hideBackground();
-const result = await BarcodeScanner.startScan();
+AmusoireBarcodeScanner.hideBackground();
+const result = await AmusoireBarcodeScanner.startScan();
 ```
 
 #### It doesn't appear

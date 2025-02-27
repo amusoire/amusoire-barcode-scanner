@@ -1,5 +1,5 @@
 export type CallbackID = string;
-export interface BarcodeScannerPlugin {
+export interface AmusoireBarcodeScannerPlugin {
   prepare(options?: ScanOptions): Promise<void>;
   hideBackground(): Promise<void>;
   showBackground(): Promise<void>;
@@ -89,14 +89,14 @@ const _SupportedFormat = {
 export const SupportedFormat = _SupportedFormat satisfies {
   [k in SupportedFormat]: k;
 };
-export type SupportedFormat = typeof _SupportedFormat[keyof typeof _SupportedFormat];
+export type SupportedFormat = (typeof _SupportedFormat)[keyof typeof _SupportedFormat];
 
 export const CameraDirection = {
   FRONT: 'front',
   BACK: 'back',
 } as const;
 
-export type CameraDirection = typeof CameraDirection[keyof typeof CameraDirection];
+export type CameraDirection = (typeof CameraDirection)[keyof typeof CameraDirection];
 
 export interface ScanOptions {
   /**

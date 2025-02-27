@@ -3,7 +3,7 @@ import { BarcodeFormat, BrowserQRCodeReader, IScannerControls } from '@zxing/bro
 import { DecodeHintType } from '@zxing/library';
 
 import {
-  BarcodeScannerPlugin,
+  AmusoireBarcodeScannerPlugin,
   ScanOptions,
   ScanResult,
   CheckPermissionOptions,
@@ -14,7 +14,7 @@ import {
   IScanResultWithContent,
 } from './definitions';
 
-export class BarcodeScannerWeb extends WebPlugin implements BarcodeScannerPlugin {
+export class AmusoireBarcodeScannerWeb extends WebPlugin implements AmusoireBarcodeScannerPlugin {
   private static _FORWARD = { facingMode: 'user' };
   private static _BACK = { facingMode: 'environment' };
   private _formats: number[] = [];
@@ -23,7 +23,7 @@ export class BarcodeScannerWeb extends WebPlugin implements BarcodeScannerPlugin
   private _video: HTMLVideoElement | null = null;
   private _options: ScanOptions | null = null;
   private _backgroundColor: string | null = null;
-  private _facingMode: MediaTrackConstraints = BarcodeScannerWeb._BACK;
+  private _facingMode: MediaTrackConstraints = AmusoireBarcodeScannerWeb._BACK;
 
   async prepare(): Promise<void> {
     await this._getVideoElement();
@@ -53,7 +53,10 @@ export class BarcodeScannerWeb extends WebPlugin implements BarcodeScannerPlugin
       }
     });
     if (!!_options?.cameraDirection) {
-      this._facingMode = _options.cameraDirection === CameraDirection.BACK ? BarcodeScannerWeb._BACK : BarcodeScannerWeb._FORWARD;
+      this._facingMode =
+        _options.cameraDirection === CameraDirection.BACK
+          ? AmusoireBarcodeScannerWeb._BACK
+          : AmusoireBarcodeScannerWeb._FORWARD;
     }
     const video = await this._getVideoElement();
     if (video) {

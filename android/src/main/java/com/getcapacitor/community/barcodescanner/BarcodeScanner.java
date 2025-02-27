@@ -1,4 +1,4 @@
-package com.getcapacitor.community.barcodescanner;
+package com.getcapacitor.amusoire.barcodescanner;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -41,8 +41,8 @@ import java.util.List;
 import java.util.Map;
 import org.json.JSONException;
 
-@CapacitorPlugin(permissions = { @Permission(strings = { Manifest.permission.CAMERA }, alias = BarcodeScanner.PERMISSION_ALIAS_CAMERA) })
-public class BarcodeScanner extends Plugin implements BarcodeCallback {
+@CapacitorPlugin(permissions = { @Permission(strings = { Manifest.permission.CAMERA }, alias = AmusoireBarcodeScanner.PERMISSION_ALIAS_CAMERA) })
+public class AmusoireBarcodeScanner extends Plugin implements BarcodeCallback {
 
     public static final String PERMISSION_ALIAS_CAMERA = "camera";
 
@@ -186,7 +186,7 @@ public class BarcodeScanner extends Plugin implements BarcodeCallback {
                     PluginCall call = getSavedCall();
 
                     if (call == null || mBarcodeView == null) {
-                        Log.d("scanner", "Something went wrong with configuring the BarcodeScanner.");
+                        Log.d("scanner", "Something went wrong with configuring the AmusoireBarcodeScanner.");
                         return;
                     }
 
